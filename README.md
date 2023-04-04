@@ -1,0 +1,3 @@
+# Covid-19-CXR-Image-Translations-using-GAN-s
+This is my current minor project, in which I am working on Image to Image Translation using GAN's(Generative Adversarial Networks)  for Covid-19 CXR Images.
+I take input of a normal chest x ray image and then translate it to see how it would look - if the person had Covid-19...
