@@ -4,7 +4,7 @@ from model import define_discriminator,define_composite_model,define_generator,t
 from input_pipeline import load_images , preprocess_data
 from sklearn.utils import resample
 
-path = ".\\Final Dataset\\"
+path = ".\\Dataset1\\"
 dataA_all = load_images(path + 'Normal\\')
 print('Loaded dataA: ', dataA_all.shape)
 

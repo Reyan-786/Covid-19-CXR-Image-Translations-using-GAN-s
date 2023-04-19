@@ -16,11 +16,11 @@ from keras.models import load_model
 from sklearn.utils import resample
 from input_pipeline import load_images
 
-path = '.\\Final Dataset\\'
+path = '.\\Dataset1\\'
 
-dataA_all = load_images(path + 'trainA\\')
+dataA_all = load_images(path + 'Normal\\')
 print('Loaded dataA: ', dataA_all.shape)
-dataB_all = load_images(path + 'trainB\\')
+dataB_all = load_images(path + 'Covid-19\\')
 print('Loaded dataB: ', dataB_all.shape)
 # load dataset
 A_data = resample(dataA_all, 
@@ -54,7 +54,7 @@ show_plot(B_real, A_generated, B_reconstructed)
 
 ##########################
 #Load a single custom image
-test_image = load_img('test_image.jpg')
+test_image = load_img('.\\test_image.jpg')
 test_image = img_to_array(test_image)
 test_image_input = np.array([test_image])  # Convert single image to a batch.
 test_image_input = (test_image_input - 127.5) / 127.5
