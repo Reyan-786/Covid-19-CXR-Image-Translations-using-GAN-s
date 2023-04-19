@@ -212,7 +212,7 @@ def train(d_model_A, d_model_B, g_model_AtoB, g_model_BtoA, c_model_AtoB, c_mode
         #Since our batch size =1, the number of iterations would be same as the size of our dataset.
         #In one epoch you'd have iterations equal to the number of images.
         #If you have 100 images then 1 epoch would be 100 iterations
-        print('Iteration>%d, dA[%.3f,%.3f] dB[%.3f,%.3f] g[%.3f,%.3f]' % (i+1, dA_loss1,dA_loss2, dB_loss1,dB_loss2, g_loss1,g_loss2))
+        print('Iteration==>%d, dA[%.3f,%.3f] dB[%.3f,%.3f] g[%.3f,%.3f]' % (i+1, dA_loss1,dA_loss2, dB_loss1,dB_loss2, g_loss1,g_loss2))
         # evaluate the model performance periodically
         #If batch size (total images)=100, performance will be summarized after every 75th iteration.
         if (i+1) % (bat_per_epo * 1) == 0:
