@@ -40,13 +40,16 @@ B_data = (B_data - 127.5) / 127.5
 cust = {'InstanceNormalization': InstanceNormalization}
 model_AtoB = load_model('', cust)
 model_BtoA = load_model('', cust)
+# A-> Normal 
+# B-> Covid 
 
-# plot A->B->A (Monet to photo to Monet)
+# plot A->B->A (Normal to Covid to Normal)
+
 A_real = select_sample(A_data, 1)
 B_generated  = model_AtoB.predict(A_real)
 A_reconstructed = model_BtoA.predict(B_generated)
 show_plot(A_real, B_generated, A_reconstructed)
-# plot B->A->B (Photo to Monet to Photo)
+# plot B->A->B (Covid to Normal to Covid)
 B_real = select_sample(B_data, 1)
 A_generated  = model_BtoA.predict(B_real)
 B_reconstructed = model_AtoB.predict(A_generated)
@@ -59,8 +62,8 @@ test_image = img_to_array(test_image)
 test_image_input = np.array([test_image])  # Convert single image to a batch.
 test_image_input = (test_image_input - 127.5) / 127.5
 
-# plot B->A->B (Photo to Monet to Photo)
-monet_generated  = model_BtoA.predict(test_image_input)
-photo_reconstructed = model_AtoB.predict(monet_generated)
-show_plot(test_image_input, monet_generated, photo_reconstructed)
+# plot B->A->B (Covid to Normal to Covid)
+CovidGenerated  = model_BtoA.predict(test_image_input)
+NormalGenerated= model_AtoB.predict(CovidGenerated)
+show_plot(test_image_input, CovidGenerated , NormalGenerated)
 
