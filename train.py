@@ -3,7 +3,6 @@ from datetime import datetime
 from model import define_discriminator,define_composite_model,define_generator,train
 from input_pipeline import load_images , preprocess_data
 from sklearn.utils import resample
-from keras.utils import img_to_array
 
 path = ".\\Final Dataset\\"
 dataA_all = load_images(path + 'Normal\\')

@@ -1,15 +1,12 @@
-from random import random
 import numpy as np
 from numpy import load 
-from numpy import zeros 
 from numpy import asarray
 from numpy.random import randint 
 from os import listdir
-from numpy import vstack
-from keras.preprocessing.image import img_to_array
-from keras.preprocessing.image import load_img
-from matplotlib import pyplot as plt
+from keras.utils import img_to_array
+from keras.utils import load_img
 import numpy as np
+
 
 def load_real_samples(filename):
     #     load and prepare the training images
@@ -22,7 +19,7 @@ def load_real_samples(filename):
 
 
 # load all images in a directory into memory
-def load_images(path, size=(256,256)):
+def load_images(path, size=(512,512)):
 	data_list = list()
 	# enumerate filenames in directory, assume all are images
 	for filename in listdir(path):

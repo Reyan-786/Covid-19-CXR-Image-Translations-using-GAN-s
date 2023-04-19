@@ -13,7 +13,7 @@ from keras.layers import Conv2DTranspose
 from keras.layers import LeakyReLU
 from keras.layers import Activation 
 from keras.layers import Concatenate
-from input_pipeline import generate_real_samples,generate_fake_samples
+from input_pipeline import generate_real_samples,generate_fake_samples,load_real_samples
 # downloaded the instancenormalization from https://www.github.com/keras-team/keras-contrib.git as instructed in the paper U.C.B unpaired .....
 
 from keras_contrib.layers.normalization.instancenormalization import InstanceNormalization
@@ -124,14 +124,6 @@ def define_composite_model(g_model_1,d_model,g_model_2,image_shape):
     model.compile(loss=['mse','mae','mae','mae'],loss_weights = [1,5,10,10],optimizer =opt)
     return model
 
-def load_real_samples(filename):
-    #     load and prepare the training images
-    data = load(filename)
-    X1,X2 = data['arr_0'],data['arr_1']
-#     scale from 0,255 to -1,1
-    X1 = (X1-127.5)/127.5
-    X2 = (X2-127.5)/127.5
-    return [X1,X2]
 
 def save_models(step,g_model_AtoB,g_model_BtoA):
     filename1 = 'g_model_AtoB{}.h5'.format(step+1)

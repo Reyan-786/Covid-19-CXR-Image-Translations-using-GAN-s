@@ -1,13 +1,5 @@
-from random import random
-import numpy as np
-from numpy import load 
-from numpy import zeros 
-from numpy import asarray
 from numpy.random import randint 
-from os import listdir
 from numpy import vstack
-from keras.preprocessing.image import img_to_array
-from keras.preprocessing.image import load_img
 from matplotlib import pyplot 
 import numpy as np
 
