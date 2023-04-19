@@ -4,15 +4,16 @@ from numpy import load
 from numpy import zeros 
 from numpy import asarray
 from numpy.random import randint 
-from tensorflow.python.keras.optimizers import Adam
-from tensorflow.python.keras.initializers import RandomNormal
-from tensorflow.python.keras.models import Model
-from tensorflow.python.keras.layers import Input 
-from tensorflow.python.keras.layers import Conv2D
-from tensorflow.python.keras.layers import Conv2DTranspose
-from tensorflow.python.keras.layers import LeakyReLU
-from tensorflow.python.keras.layers import Activation 
-from tensorflow.python.keras.layers import Concatenate
+from keras.optimizers import Adam
+from keras.initializers import RandomNormal
+from keras.models import Model
+from keras.layers import Input 
+from keras.layers import Conv2D
+from keras.layers import Conv2DTranspose
+from keras.layers import LeakyReLU
+from keras.layers import Activation 
+from keras.layers import Concatenate
+from input_pipeline import generate_real_samples,generate_fake_samples
 # downloaded the instancenormalization from https://www.github.com/keras-team/keras-contrib.git as instructed in the paper U.C.B unpaired .....
 
 from keras_contrib.layers.normalization.instancenormalization import InstanceNormalization
@@ -132,18 +133,6 @@ def load_real_samples(filename):
     X2 = (X2-127.5)/127.5
     return [X1,X2]
 
-
-def generate_real_samples(dataset,n_samples,patch_shape):
-    ix = randint(0,dataset.shape[0],n_samples)
-    X=dataset[ix]
-    y = np.ones([n_samples,patch_shape,patch_shape,1])
-    return X,y
-
-def generate_fake_samples(g_model,dataset,patch_shape):
-    X= g_model.predict(dataset)
-    y = np.zeros([len(X),patch_shape,patch_shape,1])
-    return X,y
-
 def save_models(step,g_model_AtoB,g_model_BtoA):
     filename1 = 'g_model_AtoB{}.h5'.format(step+1)
     g_model_AtoB.save(filename1)
@@ -244,4 +233,3 @@ def train(d_model_A, d_model_B, g_model_AtoB, g_model_BtoA, c_model_AtoB, c_mode
             # #If batch size (total images)=100, model will be saved after 
             #every 75th iteration x 5 = 375 iterations.
             save_models(i, g_model_AtoB, g_model_BtoA)
-
