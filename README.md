@@ -5,4 +5,4 @@ The purpose of this project is mainly to create a better COVID-19 Chest X Ray da
 
 There could be many other application's of this model as well such as how closely the image of the current X-Ray matches to the COVID-19 X-Ray image generated.
 
-This could be eventually be used to predict if the person has/had COVID-19.....
+Eventually my goal is to create an entire Covid-19 tool which would be very beneficial to the society.
