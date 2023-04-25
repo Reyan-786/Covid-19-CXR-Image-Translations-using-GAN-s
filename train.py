@@ -43,8 +43,6 @@ plt.show()
 data = [dataA, dataB]
 print('Loaded', data[0].shape, data[1].shape)
 
-
-
 dataset = preprocess_data(data)
 
 image_shape = dataset[0].shape[1:]
@@ -67,6 +65,7 @@ start1 = datetime.now()
 train(d_model_A, d_model_B, g_model_AtoB, g_model_BtoA, c_model_AtoB, c_model_BtoA, dataset, epochs=5)
 
 stop1 = datetime.now()
-#Execution time of the model 
+
+# Execution time of the model
 execution_time = stop1-start1
 print("Execution time is: ", execution_time)
