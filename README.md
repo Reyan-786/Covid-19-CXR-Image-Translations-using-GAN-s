@@ -31,6 +31,31 @@ the generator network is as shown in the figure.
   <img src="./model_view.png" height ="300" width="500" title="hover text">
 </p>
 
+The Generator used in this implementation involves three parts to it: `In-network Downsampling`, `Several Residual Blocks` and `In-network Upsampling`
+
+The first layer has `kernel-size` = 7 while the other has `kernel size` = 3
+
+Each `Residual Block` consists of two Convolution Layers. The first Convolution Layer is followed by `Instance Normalization` and `ReLu` activation. The output is then passed through a second Convolution Layer followed by `Instance Normalization`. The output obtained from this is then concatenated to the original input. 
+They are used to solve the problem of `Vanishing Gradient/Exploding Gradient`.
+Kernel size = (3,3).
+
+The number of Residual Blocks depends on the size of the input image. For 128x128 images, 6 residual blocks are used and for 256x256 and higher dimensional images, 9 residual blocks are used.
+
+
+**Discriminator Network**
+
+<p align="center">
+  <img src="./discriminator_model_view.png" height ="300" width="500" title="hover text">
+</p>
+
+The discriminator is a `Patch GAN` i.e it return a label for a patch rather than for the entire image. That is why we have a Conv2D layer at as last layer instead of a Dense layer. 
+
+Discriminator network has kernel size (4,4) and stride =(2,2.
+
+PATCH SHAPE = (16,16)
+
+
+
 
 
 
