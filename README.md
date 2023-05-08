@@ -50,7 +50,7 @@ The number of Residual Blocks depends on the size of the input image. For 128x12
 
 The discriminator is a `Patch GAN` i.e it return a label for a patch rather than for the entire image. That is why we have a Conv2D layer at as last layer instead of a Dense layer. 
 
-Discriminator network has kernel size (4,4) and stride =(2,2.
+Discriminator network has kernel size (4,4) and stride =(2,2).
 
 PATCH SHAPE = (16,16)
 <hr/>
