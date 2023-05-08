@@ -13,7 +13,9 @@ The Model used for doing this was trained for 30 epochs (due to lack of computat
 
 I compensated this by reducing the batch size to 1.
 <hr/>
+
 # Data Set 
+
 the training set was taken from 3 sources -: 
 
 1. https://github.com/ieee8023/covid-chestxray-dataset
@@ -21,7 +23,9 @@ the training set was taken from 3 sources -:
 3. https://github.com/agchung
 
 the final dataset had 500 images for both classes. (i.e 500 for Normal CXR and 500 for Covid-19 CXR)
+
 <hr/>
+
 # Model Architecture
 
 The Cycle GAN model has 2 generator networks and 2 discriminator networks for tramslations between domain A -> domain B or vice versa.
@@ -56,6 +60,7 @@ The discriminator is a `Patch GAN` i.e it return a label for a patch rather than
 Discriminator network has kernel size (4,4) and stride =(2,2).
 
 PATCH SHAPE = (16,16)
+
 <hr/>
 
 # Results Obtained
@@ -65,7 +70,9 @@ PATCH SHAPE = (16,16)
 </p>
 
 #### This is one of the result obtained after training the GAN model, where you can see the `Genarated` image has some cloudy patches in the lung region as compared to the `Original` Image.
+
 <hr/>
+
 # References and Links
 
 1. Hasib Zunair and A. Ben Hamza , “Synthesis of COVID-19 Chest X-rays using Unpaired Image-to-Image Translation”, https://link.springer.com/journal/13278, Springer, 2021.
@@ -82,6 +89,7 @@ Taesung Park,Phillip Isola,Alexei A. Efros,arXiv:1703.10593v7 [cs.CV] 24 Aug 202
 8. https://github.com/agchung
 9. [Deep Learning with PyTorch: Zero to GANs | Jovian](https://jovian.com/learn/deep-learning-with-pytorch-zero-to-gans)
 10. [Generative Adversarial Network (GAN) - GeeksforGeeks](https://www.geeksforgeeks.org/generative-adversarial-network-gan/)
+
 
 <hr/>
 
