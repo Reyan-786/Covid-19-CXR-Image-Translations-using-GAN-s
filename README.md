@@ -35,7 +35,7 @@ The Cycle GAN model has 2 generator networks and 2 discriminator networks for tr
 the generator network is as shown in the figure.
 
 <p align="center">
-  <img src="./model_view.png" height ="300" width="500" title="hover text">
+  <img src="./model_view.png" height ="300" width="500" title="Generator Model">
 </p>
 
 The Generator used in this implementation involves three parts to it: `In-network Downsampling`, `Several Residual Blocks` and `In-network Upsampling`
@@ -52,7 +52,7 @@ The number of Residual Blocks depends on the size of the input image. For 128x12
 **Discriminator Network**
 
 <p align="center">
-  <img src="./discriminator_model_view.png" height ="300" width="500" title="hover text">
+  <img src="./discriminator_model_view.png" height ="300" width="500" title="Discriminator Model">
 </p>
 
 The discriminator is a `Patch GAN` i.e it return a label for a patch rather than for the entire image. That is why we have a Conv2D layer at as last layer instead of a Dense layer. 
@@ -66,7 +66,7 @@ PATCH SHAPE = (16,16)
 # Results Obtained
 
 <p align="center">
-  <img src="./Generated_vs_Original5.png" height ="300" width="500" title="hover text">
+  <img src="./Generated_vs_Original5.png" height ="300" width="500" title="Generated v/s Original Image -Result">
 </p>
 
 #### This is one of the result obtained after training the GAN model, where you can see the `Genarated` image has some cloudy patches in the lung region as compared to the `Original` Image.
