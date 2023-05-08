@@ -61,7 +61,26 @@ PATCH SHAPE = (16,16)
   <img src="./Generated_vs_Original5.png" height ="300" width="500" title="hover text">
 </p>
 
-### This is one of the result obtained after training the GAN model, where you can see the `Genarated` image has some cloudy patches in the lung region as compared to the `Original` Image
+#### This is one of the result obtained after training the GAN model, where you can see the `Genarated` image has some cloudy patches in the lung region as compared to the `Original` Image.
+
+# References and Links
+
+1. Hasib Zunair and A. Ben Hamza , “Synthesis of COVID-19 Chest X-rays using Unpaired Image-to-Image Translation”, https://link.springer.com/journal/13278, Springer, 2021.
+
+2. “Enhancing Automated COVID-19 Chest X-ray Diagnosis by Image-to-Image GAN Translation”, 2020 IEEE International Conference on Bioinformatics and Biomedicine (BIBM) 978-1-7281-6215-7/20/$31.00 ©2020 IEEE DOI: 10.1109/BIBM49941.2020.9313466,Enhancing Automated COVID-19 Chest X-ray Diagnosis by Image-to-Image GAN Translation | IEEE Conference Publication | IEEE Xplore
+
+3. “Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks”,Jun-Yan Zhu∗
+Taesung Park,Phillip Isola,Alexei A. Efros,arXiv:1703.10593v7 [cs.CV] 24 Aug 2020,[1703.10593] Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks (arxiv.org)
+
+4. A Gentle Introduction to CycleGAN for Image Translation - MachineLearningMastery.com 
+5. The Beauty of CycleGAN. The intuition and math behind… | by Sebastian Theiler | Analytics Vidhya | Medium 
+6. https://github.com/ieee8023/covid-chestxray-dataset 
+7. https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia
+8. https://github.com/agchung
+9. [Deep Learning with PyTorch: Zero to GANs | Jovian](https://jovian.com/learn/deep-learning-with-pytorch-zero-to-gans)
+10. [Generative Adversarial Network (GAN) - GeeksforGeeks](https://www.geeksforgeeks.org/generative-adversarial-network-gan/)
+
+
 
 
 
