@@ -21,7 +21,12 @@ the final dataset had 500 images for both classes. (i.e 500 for Normal CXR and 5
 
 # Model Architecture
 
+The Cycle GAN model has 2 generator networks and 2 discriminator networks for tramslations between domain A -> domain B or vice versa.
 
+**Generator Network**
+
+the generator network is as shown in the figure.
+(./model_view.png)
 
 
 
