@@ -26,7 +26,10 @@ The Cycle GAN model has 2 generator networks and 2 discriminator networks for tr
 **Generator Network**
 
 the generator network is as shown in the figure.
-(./model_view.png)
+
+<p align="center">
+  <img src="./model_view.png" width="350" title="hover text">
+</p>
 
 
 
