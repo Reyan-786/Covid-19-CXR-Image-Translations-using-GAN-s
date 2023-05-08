@@ -1,8 +1,11 @@
 # Covid-19-CXR-Image-Translations-using-GAN-s
 This is my recent project ,in which I worked on Image 2 Image Translations using a Cycle GAN network. 
+
 <hr/>
+
 # Task
 The goal of the project was to take as input an image of normal Chest X-Ray i.e *free of Covid-19* and apply image processing using **Cycle GAN** and translate it into a *Covid-19* Chest X-Ray Image.
+
 <hr/>
 
 # Model 
