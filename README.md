@@ -35,7 +35,7 @@ The Cycle GAN model has 2 generator networks and 2 discriminator networks for tr
 the generator network is as shown in the figure.
 
 <p align="center">
-  <img src="./model_view.png" height ="300" width="500" title="Generator Model">
+  <img src="./model_view.png" height ="250" width="500" title="Generator Model">
 </p>
 
 The Generator used in this implementation involves three parts to it: `In-network Downsampling`, `Several Residual Blocks` and `In-network Upsampling`
