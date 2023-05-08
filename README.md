@@ -1,15 +1,15 @@
 # Covid-19-CXR-Image-Translations-using-GAN-s
 This is my recent project ,in which I worked on Image 2 Image Translations using a Cycle GAN network. 
-
+<hr/>
 # Task
 The goal of the project was to take as input an image of normal Chest X-Ray i.e *free of Covid-19* and apply image processing using **Cycle GAN** and translate it into a *Covid-19* Chest X-Ray Image.
-
+<hr/>
 
 # Model 
 The Model used for doing this was trained for 30 epochs (due to lack of computational power) though a GAN should be ideally trained for a minimum of 100 epochs.
 
 I compensated this by reducing the batch size to 1.
-
+<hr/>
 # Data Set 
 the training set was taken from 3 sources -: 
 
@@ -18,7 +18,7 @@ the training set was taken from 3 sources -:
 3. https://github.com/agchung
 
 the final dataset had 500 images for both classes. (i.e 500 for Normal CXR and 500 for Covid-19 CXR)
-
+<hr/>
 # Model Architecture
 
 The Cycle GAN model has 2 generator networks and 2 discriminator networks for tramslations between domain A -> domain B or vice versa.
@@ -53,7 +53,7 @@ The discriminator is a `Patch GAN` i.e it return a label for a patch rather than
 Discriminator network has kernel size (4,4) and stride =(2,2.
 
 PATCH SHAPE = (16,16)
-
+<hr/>
 
 # Results Obtained
 
@@ -62,7 +62,7 @@ PATCH SHAPE = (16,16)
 </p>
 
 #### This is one of the result obtained after training the GAN model, where you can see the `Genarated` image has some cloudy patches in the lung region as compared to the `Original` Image.
-
+<hr/>
 # References and Links
 
 1. Hasib Zunair and A. Ben Hamza , “Synthesis of COVID-19 Chest X-rays using Unpaired Image-to-Image Translation”, https://link.springer.com/journal/13278, Springer, 2021.
@@ -80,7 +80,7 @@ Taesung Park,Phillip Isola,Alexei A. Efros,arXiv:1703.10593v7 [cs.CV] 24 Aug 202
 9. [Deep Learning with PyTorch: Zero to GANs | Jovian](https://jovian.com/learn/deep-learning-with-pytorch-zero-to-gans)
 10. [Generative Adversarial Network (GAN) - GeeksforGeeks](https://www.geeksforgeeks.org/generative-adversarial-network-gan/)
 
-
+<hr/>
 
 
 
