@@ -55,6 +55,14 @@ Discriminator network has kernel size (4,4) and stride =(2,2.
 PATCH SHAPE = (16,16)
 
 
+# Results Obtained
+
+<p align="center">
+  <img src="./Generated_vs_Original5.png" height ="300" width="500" title="hover text">
+</p>
+
+### This is one of the result obtained after training the GAN model, where you can see the `Genarated` image has some cloudy patches in the lung region as compared to the `Original` Image
+
 
 
 
