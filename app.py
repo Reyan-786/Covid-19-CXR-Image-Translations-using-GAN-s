@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, send_file, render_template
 from PIL import Image
 from helper import preprocess_image, serve_pil_image, tensor_to_image, load_model
 import tensorflow_addons as tfa
-
+import instancenormalization
 app = Flask(__name__)
 
 @app.route('/')
@@ -27,8 +27,8 @@ def transform_image():
     # Perform your image transformation operations here
     img = preprocess_image(img)
 
-    custom_objects = {'InstanceNormalization': tfa.layers.InstanceNormalization}
-    model_AB = load_model("C:\\Users\\asus\\Desktop\\All GAN work\\CXR Translations trained models\\g_model_AtoB12500.h5", custom_objects=custom_objects)
+    # custom_objects = {'InstanceNormalization': tfa.layers.InstanceNormalization}
+    model_AB = load_model("C:\\Users\\asus\\Desktop\\All GAN work\\CXR Translations trained models\\g_model_AtoB12500.h5", custom_objects=instancenormalization)
     pred = model_AB.predict(img)
     img = tensor_to_image(pred)
     # Return the transformed image as a response
