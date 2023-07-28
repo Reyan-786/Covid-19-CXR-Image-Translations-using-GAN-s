@@ -207,12 +207,14 @@ def train(d_model_A, d_model_B, g_model_AtoB, g_model_BtoA, c_model_AtoB, c_mode
         # update discriminator for B -> [real/fake]
         dB_loss1 = d_model_B.train_on_batch(X_realB, y_realB)
         dB_loss2 = d_model_B.train_on_batch(X_fakeB, y_fakeB)
-
+        loss_history = []
         # summarize performance
         #Since our batch size =1, the number of iterations would be same as the size of our dataset.
         #In one epoch you'd have iterations equal to the number of images.
         #If you have 100 images then 1 epoch would be 100 iterations
         print('Iteration==>%d, dA[%.3f,%.3f] dB[%.3f,%.3f] g[%.3f,%.3f]' % (i+1, dA_loss1,dA_loss2, dB_loss1,dB_loss2, g_loss1,g_loss2))
+
+        loss_history.append([f"Iteration = {i}, dA = [{dA_loss1},{dA_loss2}], dB = [{dB_loss1},{dB_loss2}], g = [{g_loss1},{g_loss2}]"])
         # evaluate the model performance periodically
         #If batch size (total images)=100, performance will be summarized after every 75th iteration.
         if (i+1) % (bat_per_epo * 1) == 0:
@@ -225,3 +227,112 @@ def train(d_model_A, d_model_B, g_model_AtoB, g_model_BtoA, c_model_AtoB, c_mode
             # #If batch size (total images)=100, model will be saved after 
             #every 75th iteration x 5 = 375 iterations.
             save_models(i, g_model_AtoB, g_model_BtoA)
+    return loss_history
+# Improved code for generator and discriminator 
+
+'''
+import numpy as np
+from keras.optimizers import Adam
+from keras.initializers import RandomNormal
+from keras.layers import Conv2D, Conv2DTranspose, BatchNormalization, Activation, Input, Concatenate
+from keras.models import Model
+from keras.losses import mean_squared_error
+from skimage.metrics import structural_similarity as ssim
+import matplotlib.pyplot as plt
+
+# Data loading and preprocessing utilities
+# Add your data loading and preprocessing functions here
+# ...
+
+# Utility function to calculate the similarity loss using SSIM
+def similarity_loss(y_true, y_pred):
+    return 1 - ssim(y_true, y_pred, data_range=y_true.max() - y_true.min())
+
+# Utility function to define a ResNet block
+def resnet_block(n_filters, input_layer):
+    init = RandomNormal(stddev=0.02)
+    g = Conv2D(n_filters, (3, 3), padding='same', kernel_initializer=init)(input_layer)
+    g = BatchNormalization()(g)
+    g = Activation('relu')(g)
+    g = Conv2D(n_filters, (3, 3), padding='same', kernel_initializer=init)(g)
+    g = BatchNormalization()(g)
+    g = Concatenate()([g, input_layer])
+    return g
+
+# Improved Generator
+def define_generator(image_shape, n_resnet=9):
+    init = RandomNormal(stddev=0.02)
+    in_image = Input(shape=image_shape)
+    g = Conv2D(64, (7, 7), padding='same', kernel_initializer=init)(in_image)
+    g = BatchNormalization()(g)
+    g = Activation('relu')(g)
+    g = Conv2D(128, (3, 3), strides=(2, 2), padding='same', kernel_initializer=init)(g)
+    g = BatchNormalization()(g)
+    g = Activation('relu')(g)
+    g = Conv2D(256, (3, 3), strides=(2, 2), padding='same', kernel_initializer=init)(g)
+    g = BatchNormalization()(g)
+    g = Activation('relu')(g)
+
+    for _ in range(n_resnet):
+        g = resnet_block(256, g)
+
+    g = Conv2DTranspose(128, (3, 3), strides=(2, 2), padding='same', kernel_initializer=init)(g)
+    g = BatchNormalization()(g)
+    g = Activation('relu')(g)
+    g = Conv2DTranspose(64, (3, 3), strides=(2, 2), padding='same', kernel_initializer=init)(g)
+    g = BatchNormalization()(g)
+    g = Activation('relu')(g)
+    g = Conv2D(3, (7, 7), padding='same', kernel_initializer=init)(g)
+    out_image = Activation('tanh')(g)
+
+    model = Model(in_image, out_image)
+    return model
+
+# Improved Discriminator
+def define_discriminator(image_shape):
+    init = RandomNormal(stddev=0.02)
+    in_image = Input(shape=image_shape)
+    d = Conv2D(64, (4, 4), strides=(2, 2), padding='same', kernel_initializer=init)(in_image)
+    d = LeakyReLU(alpha=0.2)(d)
+    d = Conv2D(128, (4, 4), strides=(2, 2), padding='same', kernel_initializer=init)(d)
+    d = BatchNormalization()(d)
+    d = LeakyReLU(alpha=0.2)(d)
+    d = Conv2D(256, (4, 4), strides=(2, 2), padding='same', kernel_initializer=init)(d)
+    d = BatchNormalization()(d)
+    d = LeakyReLU(alpha=0.2)(d)
+    d = Conv2D(512, (4, 4), strides=(2, 2), padding='same', kernel_initializer=init)(d)
+    d = BatchNormalization()(d)
+    d = LeakyReLU(alpha=0.2)(d)
+    d = Conv2D(1, (4, 4), padding='same', kernel_initializer=init)(d)
+    patch_output = Activation('sigmoid')(d)  # Use sigmoid activation for PatchGAN
+
+    model = Model(in_image, patch_output)
+    return model
+
+# Define the composite model
+def define_composite_model(g_model_AtoB, d_model_B, g_model_BtoA, d_model_A, image_shape):
+    g_model_AtoB.trainable = True
+    d_model_B.trainable = False
+    g_model_BtoA.trainable = False
+    d_model_A.trainable = False
+
+    input_gen = Input(shape=image_shape)
+    gen_B = g_model_AtoB(input_gen)
+    output_d = d_model_B(gen_B)
+
+    input_id = Input(shape=image_shape)
+    output_id = g_model_AtoB(input_id)
+
+    gen_A = g_model_BtoA(gen_B)
+    output_f = g_model_AtoB(gen_A)
+    gen_B = g_model_AtoB(input_id)
+    output_b = g_model_BtoA(gen_B)
+
+    model = Model(inputs=[input_gen, input_id], outputs=[output_d, output_id, output_f, output_b])
+
+    model.compile(loss=['mse', 'mae', similarity_loss, similarity_loss],
+                  loss_weights=[1, 5, 10, 10],
+                  optimizer=Adam(lr=0.0002, beta_1=0.5))
+
+    return model
+'''
