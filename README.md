@@ -1,5 +1,4 @@
 # Covid-19-CXR-Image-Translations-using-GAN-s
-This is my recent project ,in which I worked on Image 2 Image Translations using a Cycle GAN network. 
 
 <hr/>
 
