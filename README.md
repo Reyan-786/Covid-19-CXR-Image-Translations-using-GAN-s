@@ -1,6 +1,5 @@
 # Covid-19-CXR-Image-Translations-using-GAN-s
-This is my recent project ,in which I worked on Image 2 Image Translations using a Cycle GAN network. 
-
+<hr/>
 <hr/>
 
 # Task
@@ -93,7 +92,10 @@ Taesung Park,Phillip Isola,Alexei A. Efros,arXiv:1703.10593v7 [cs.CV] 24 Aug 202
 
 <hr/>
 
+# Future Updates
 
+1. To add a similarity check between the generated image and the input.
+2. Add more functionalities like present covid-19 cases/ active cases.
+3. Update the backend.
 
-
-
+<hr/>
