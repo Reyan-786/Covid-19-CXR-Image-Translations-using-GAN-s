@@ -28,7 +28,7 @@ def transform_image():
     img = preprocess_image(img)
 
     custom_objects = {'InstanceNormalization': tfa.layers.InstanceNormalization}
-    model_AB = load_model("C:\\Users\\asus\\Desktop\\CXR Translations trained models\\g_model_AtoB12500.h5", custom_objects=custom_objects)
+    model_AB = load_model("C:\\Users\\asus\\Desktop\\All GAN work\\CXR Translations trained models\\g_model_AtoB12500.h5", custom_objects=custom_objects)
     pred = model_AB.predict(img)
     img = tensor_to_image(pred)
     # Return the transformed image as a response

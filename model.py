@@ -228,6 +228,7 @@ def train(d_model_A, d_model_B, g_model_AtoB, g_model_BtoA, c_model_AtoB, c_mode
             #every 75th iteration x 5 = 375 iterations.
             save_models(i, g_model_AtoB, g_model_BtoA)
     return loss_history
+
 # Improved code for generator and discriminator 
 
 '''

@@ -4,6 +4,35 @@
   <title>COVID-19 X-Ray Translation</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
+
+    /* Style for the COVID-19 Statistics section */
+#covid-stats {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Style for the box containing each stat */
+.stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Style for each individual stat box */
+.stats-container p {
+  width: 200px;
+  height: 80px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
     /* CSS for the loading element */
     #loading {
       display: flex;
@@ -154,6 +183,17 @@
     <p>Loading...</p>
   </div>
 
+  <section id="covid-stats">
+    <h2>COVID-19 Statistics</h2>
+    <div class="stats-container">
+      <p>Active Cases: <span id="active-cases">Loading...</span></p>
+      <p>Total Cases: <span id="total-cases">Loading...</span></p>
+      <p>Recovered Cases: <span id="recovered-cases">Loading...</span></p>
+      <p>Total Deaths: <span id="total-deaths">Loading...</span></p>
+    </div>
+  </section>
+  
+
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -225,7 +265,24 @@
       // Trigger a click event on the anchor element to start the download
       downloadLink.click();
     });
+    // Function to fetch COVID-19 statistics from the API
+  async function fetchCovidStats() {
+    try {
+      const response = await fetch('https://api.covid19api.com/summary');
+      const data = await response.json();
 
+      // Update the HTML content with the retrieved data
+      document.getElementById('active-cases').textContent = data.Global.TotalConfirmed - data.Global.TotalRecovered - data.Global.TotalDeaths;
+      document.getElementById('total-cases').textContent = data.Global.TotalConfirmed;
+      document.getElementById('recovered-cases').textContent = data.Global.TotalRecovered;
+      document.getElementById('total-deaths').textContent = data.Global.TotalDeaths;
+    } catch (error) {
+      console.error('Error fetching COVID-19 statistics:', error);
+    }
+  }
+
+  // Call the function to fetch and update the statistics on page load
+  fetchCovidStats();
   </script>
 </body>
 </html>
