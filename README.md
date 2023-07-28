@@ -94,6 +94,13 @@ Taesung Park,Phillip Isola,Alexei A. Efros,arXiv:1703.10593v7 [cs.CV] 24 Aug 202
 <hr/>
 
 
-
+# To run the project
+<hr/>
+1. **clone the repository using git clone**
+<br>
+2. install the required packages listed in the requirements.txt using **pip install -r requirements.txt**
+<br>
+3. run the flask server using **flask run**
+<hr/>
 
 
