@@ -99,3 +99,8 @@ Taesung Park,Phillip Isola,Alexei A. Efros,arXiv:1703.10593v7 [cs.CV] 24 Aug 202
 3. Update the backend.
 
 <hr/>
+
+# Image of the Flask App.
+
+![image_731cf6b6-4f19-4ae7-b225-4557c6bd2e7820230728_171710](https://github.com/Reyan-786/Covid-19-CXR-Image-Translations-using-GAN-s/assets/99291472/e422024b-d35c-43b4-8cc5-b319849e4113)
+<hr/>
