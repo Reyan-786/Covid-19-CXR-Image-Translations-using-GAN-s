@@ -34,7 +34,7 @@ The Cycle GAN model has 2 generator networks and 2 discriminator networks for tr
 the generator network is as shown in the figure.
 
 <p align="center">
-  <img src="./model_view.png" height ="250" width="500" title="Generator Model">
+  <img src="./Model Diagrams/model_view.png" height ="250" width="500" title="Generator Model">
 </p>
 
 The Generator used in this implementation involves three parts to it: `In-network Downsampling`, `Several Residual Blocks` and `In-network Upsampling`
@@ -51,7 +51,7 @@ The number of Residual Blocks depends on the size of the input image. For 128x12
 **Discriminator Network**
 
 <p align="center">
-  <img src="./discriminator_model_view.png" height ="300" width="500" title="Discriminator Model">
+  <img src="./Model Diagrams/discriminator_model_view.png" height ="300" width="500" title="Discriminator Model">
 </p>
 
 The discriminator is a `Patch GAN` i.e it return a label for a patch rather than for the entire image. That is why we have a Conv2D layer at as last layer instead of a Dense layer. 
@@ -65,19 +65,19 @@ PATCH SHAPE = (16,16)
 # Results Obtained
 Following are the results, obtained by using a model trained for 30 epochs, each epoch having 576 steps. 
 <p align="center">
-  <img src="./Generated_vs_Original5.png" height ="300" width="500" title="Generated v/s Original Image -Result">
+  <img src="./generated_vs_original/Generated_vs_Original5.png" height ="300" width="500" title="Generated v/s Original Image -Result">
 </p>
 <p align="center">
-  <img src="./Generated_vs_Original1.png" height ="300" width="500" title="Generated v/s Original Image -Result">
+  <img src="./generated_vs_original/Generated_vs_Original1.png" height ="300" width="500" title="Generated v/s Original Image -Result">
 </p>
 <p align="center">
-  <img src="./Generated_vs_Original2.png" height ="300" width="500" title="Generated v/s Original Image -Result">
+  <img src="./generated_vs_original/Generated_vs_Original2.png" height ="300" width="500" title="Generated v/s Original Image -Result">
 </p>
 <p align="center">
-  <img src="./Generated_vs_Original3.png" height ="300" width="500" title="Generated v/s Original Image -Result">
+  <img src="./generated_vs_original/Generated_vs_Original3.png" height ="300" width="500" title="Generated v/s Original Image -Result">
 </p>
 <p align="center">
-  <img src="./Generated_vs_Original4.png" height ="300" width="500" title="Generated v/s Original Image -Result">
+  <img src="./generated_vs_original/Generated_vs_Original4.png" height ="300" width="500" title="Generated v/s Original Image -Result">
 </p>
 
 #### Comment on the image generated : 
@@ -114,10 +114,10 @@ Taesung Park,Phillip Isola,Alexei A. Efros,arXiv:1703.10593v7 [cs.CV] 24 Aug 202
 
 <hr/>
 
-# Image of the Flask App.
-
-![image_731cf6b6-4f19-4ae7-b225-4557c6bd2e7820230728_171710](https://github.com/Reyan-786/Covid-19-CXR-Image-Translations-using-GAN-s/assets/99291472/e422024b-d35c-43b4-8cc5-b319849e4113)
-<hr/>
+# Usage
+To use this, first clone this repo into your desktop, then run the app.py using flask run 
+**Note** To generate the images you need to have a trained model for translating normal domain image into the covid-19 domain image. 
+<hr>
 
 # Collaborations 
 This project is open for collaborations, you are free to reach out to me regarding any collaborations, or in case you need the models that I have trained for testing/research purposes. 
