@@ -63,12 +63,26 @@ PATCH SHAPE = (16,16)
 <hr/>
 
 # Results Obtained
-
+Following are the results, obtained by using a model trained for 30 epochs, each epoch having 576 steps. 
 <p align="center">
   <img src="./Generated_vs_Original5.png" height ="300" width="500" title="Generated v/s Original Image -Result">
 </p>
+<p align="center">
+  <img src="./Generated_vs_Original1.png" height ="300" width="500" title="Generated v/s Original Image -Result">
+</p>
+<p align="center">
+  <img src="./Generated_vs_Original2.png" height ="300" width="500" title="Generated v/s Original Image -Result">
+</p>
+<p align="center">
+  <img src="./Generated_vs_Original3.png" height ="300" width="500" title="Generated v/s Original Image -Result">
+</p>
+<p align="center">
+  <img src="./Generated_vs_Original4.png" height ="300" width="500" title="Generated v/s Original Image -Result">
+</p>
 
-#### This is one of the result obtained after training the GAN model, where you can see the `Genarated` image has some cloudy patches in the lung region as compared to the `Original` Image.
+#### Comment on the image generated : 
+1. The generated image on the right appears to have more noise or artifacts compared to the "Normal" image on the left.
+2. In the generated "COVID-19" image, there may be regions that are intended to represent pathological features associated with COVID-19, such as ground-glass opacities or consolidation. These features are characterized by areas of increased opacity in the lung fields.
 
 <hr/>
 
@@ -104,3 +118,7 @@ Taesung Park,Phillip Isola,Alexei A. Efros,arXiv:1703.10593v7 [cs.CV] 24 Aug 202
 
 ![image_731cf6b6-4f19-4ae7-b225-4557c6bd2e7820230728_171710](https://github.com/Reyan-786/Covid-19-CXR-Image-Translations-using-GAN-s/assets/99291472/e422024b-d35c-43b4-8cc5-b319849e4113)
 <hr/>
+
+# Collaborations 
+This project is open for collaborations, you are free to reach out to me regarding any collaborations, or in case you need the models that I have trained for testing/research purposes. 
+
