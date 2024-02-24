@@ -115,7 +115,7 @@ Taesung Park,Phillip Isola,Alexei A. Efros,arXiv:1703.10593v7 [cs.CV] 24 Aug 202
 <hr/>
 
 # Usage
-To use this, first clone this repo into your desktop, then run the app.py using flask run 
+To use this, first clone this repo into your desktop, install all the dependencies ,then run the app.py using flask run 
 **Note** To generate the images you need to have a trained model for translating normal domain image into the covid-19 domain image. 
 <hr>
 
