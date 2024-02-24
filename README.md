@@ -81,7 +81,7 @@ Following are the results, obtained by using a model trained for 30 epochs, each
 </p>
 
 #### Comment on the image generated : 
-1. The generated image on the right appears to have more noise or artifacts compared to the "Normal" image on the left.
+1. The generated image on the left appears to have more noise or artifacts compared to the "Normal" image on the left.
 2. In the generated "COVID-19" image, there may be regions that are intended to represent pathological features associated with COVID-19, such as ground-glass opacities or consolidation. These features are characterized by areas of increased opacity in the lung fields.
 
 <hr/>
